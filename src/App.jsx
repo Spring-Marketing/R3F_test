@@ -2,6 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import "./App.css";
 import { useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
+import RoundedPillow from "./RoundedPillow";
 
 const Pillow = ({ size = [2, 0.5, 2] }) => {
   const ref = useRef();
@@ -10,7 +11,7 @@ const Pillow = ({ size = [2, 0.5, 2] }) => {
   // });
 
   return (
-    <mesh position={[0, 0, 0]} ref={ref}>
+    <mesh position={[0, 1, 0]} ref={ref}>
       <boxGeometry args={[size[0], size[1], size[2], 40, 12, 40]} />
       <meshStandardMaterial
         color="lightgrey"
@@ -59,9 +60,11 @@ function App() {
         </form>
       </div>
       <Canvas className="flex-2">
-        <directionalLight position={[-3, 3, 2]} intensity={0.5} />
-        <ambientLight intensity={0.8} />
-        <Pillow size={[width, height, depth]} />
+        <directionalLight position={[-3, 3, 2]} intensity={0.6} />
+        <ambientLight intensity={0.2} />
+        <RoundedPillow width={width} height={height} depth={depth} />
+        {/* <Pillow size={[width, height, depth]} /> */}
+        <gridHelper args={[100, 100, "#e3e3e3", "#e3e3e3"]} />
       </Canvas>
     </div>
   );
