@@ -4,29 +4,10 @@ import { useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
 import RoundedPillow from "./RoundedPillow";
 
-const Pillow = ({ size = [2, 0.5, 2] }) => {
-  const ref = useRef();
-  // useFrame((state, delta) => {
-  //   ref.current.rotation.y += delta;
-  // });
-
-  return (
-    <mesh position={[0, 1, 0]} ref={ref}>
-      <boxGeometry args={[size[0], size[1], size[2], 40, 12, 40]} />
-      <meshStandardMaterial
-        color="lightgrey"
-        roughness={0.95}
-        metalness={0.05}
-      />
-      <OrbitControls />
-    </mesh>
-  );
-};
-
 function App() {
   const [depth, setDepth] = useState(2);
-  const [width, setWidth] = useState(1.5);
-  const [height, setHeight] = useState(0.4);
+  const [width, setWidth] = useState(2);
+  const [height, setHeight] = useState(2);
   // const [material, setMaterial] = useState("1");
 
   return (
@@ -37,19 +18,19 @@ function App() {
             className="bg-white mb-2 p-2"
             type="number"
             value={width}
-            onChange={(e) => setWidth(e.target.value)}
+            onChange={(e) => setWidth(Number(e.target.value))}
           />
           <input
             className="bg-white mb-2 p-2"
             type="number"
             value={height}
-            onChange={(e) => setHeight(e.target.value)}
+            onChange={(e) => setHeight(Number(e.target.value))}
           />
           <input
             className="bg-white mb-2 p-2"
             type="number"
             value={depth}
-            onChange={(e) => setDepth(e.target.value)}
+            onChange={(e) => setDepth(Number(e.target.value))}
           />
           <select className="bg-white mb-2 p-2" name="" id="">
             <option value="Velg">Velg tekstil</option>
@@ -63,7 +44,6 @@ function App() {
         <directionalLight position={[-3, 3, 2]} intensity={0.6} />
         <ambientLight intensity={0.2} />
         <RoundedPillow width={width} height={height} depth={depth} />
-        {/* <Pillow size={[width, height, depth]} /> */}
         <gridHelper args={[100, 100, "#e3e3e3", "#e3e3e3"]} />
       </Canvas>
     </div>
