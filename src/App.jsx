@@ -28,7 +28,7 @@ function App() {
 
 
   return (
-    <div className="flex max-w-7xl m-auto mt-20 h-screen">
+    <div className="flex max-w-7xl m-auto mt-20 h-screen gap-10">
       <div className="flex-1 bg-yellow-300 border-0 rounded-2 px-10 rounded-xl">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <h2 className="text-xl m-8">Tilpass</h2>
